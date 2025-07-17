@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import PublicHeader from "@/components/layouts/PublicHeader";
 
 export const metadata: Metadata = {
