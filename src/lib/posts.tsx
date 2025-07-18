@@ -50,8 +50,18 @@ export async function searchPosts(search: string) {
 	}));
 
 	return await prisma.post.findMany({
-		whiere: {
+		where: {
 			AND: filters,
+		},
+		include: {
+			author: {
+				select: {
+					name: true,
+				},
+			},
+		},
+		orderBy: {
+			createdAt: "desc",
 		},
 	});
 }

@@ -1,10 +1,26 @@
 import React from "react";
-import { getPosts } from "@/lib/posts";
+import { getPosts, searchPosts } from "@/lib/posts";
 import PostCard from "../../components/post/PostCard";
 import { Post } from "@/types/post";
+import { SearchParams } from "next/dist/server/request/search-params";
 
-export default async function PostPage() {
-	const posts = (await getPosts()) as Post[];
+type searchParams = {
+	search?: string;
+};
+
+export default async function PostPage({
+	searchParams,
+}: {
+	searchParams: Promise<SearchParams>;
+}) {
+	const resolvedSearchParams = await searchParams;
+	const query = resolvedSearchParams.search || "";
+
+	const posts = query
+		? ((await searchPosts(query)) as Post[])
+		: ((await getPosts()) as Post[]);
+	// const posts = (await getPosts()) as Post[];
+
 	return (
 		<>
 			<div className="container mx-auto px-4 py-8">
