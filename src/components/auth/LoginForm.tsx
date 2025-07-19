@@ -26,7 +26,7 @@ export default function LoginForm() {
 						<Label htmlFor="password">メールアドレス</Label>
 						<Input id="password" type="password" name="password" required />
 					</div>
-					<Button type="submit" className="w-full">
+					<Button type="submit" className="w-full cursor-pointer">
 						ログイン
 					</Button>
 					<div className="flex h-8 items-end space-x-1">
