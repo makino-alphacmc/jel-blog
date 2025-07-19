@@ -8,7 +8,6 @@ import {
 import { signOut } from "@/auth";
 import { Button } from "../ui/button";
 import { Session } from "next-auth";
-
 export default function Setting({ session }: { session: Session }) {
 	const handleLogout = async () => {
 		"use server";
